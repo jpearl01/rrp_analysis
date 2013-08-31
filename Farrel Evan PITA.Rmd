@@ -40,7 +40,9 @@ Each line after "The best scores are" details an alignment which
 When you click the **Knit HTML** button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document.
 
 ```{r read_in_files}
-#Load up the data from the alignments
+# Load up the data from the alignments
+# each ABI sequence was compared with 5 HPV sequences and an identity score was created. 
+# Those tables are going to be read in next
 gp5_primer_samples_perc_id_only <- read.delim("P:/o_drive/Homes/epowell/RRP/HPV Typing/gp5_primer_samples_perc_id_only.tsv")
 PGMY11_primer_samples_perc_id_only <- read.delim("P:/o_drive/Homes/epowell/RRP/HPV Typing/PGMY11_primer_samples_perc_id_only.tsv")
 ```
