@@ -1,138 +1,95 @@
 # start of HPV typing categorizing---------------------------------
 PGMY11_primer_samples_perc_id_only <- read.delim("P:/o_drive/Homes/epowell/RRP/HPV Typing/PGMY11_primer_samples_perc_id_only.tsv")
-
-library(mclust)
-
-gpMclust<-Mclust(gp5_)
-gp5_primer_samples_perc_id_only
-list
-ls
 gp5_primer_samples_perc_id_only <- read.delim("P:/o_drive/Homes/epowell/RRP/HPV Typing/gp5_primer_samples_perc_id_only.tsv")
+data<-read.table("P:\\o_drive\\Homes\\epowell\\RRP\\all_against_all_matrix_ggsearch", header=TRUE, sep=" ")# all against all but not sure what to do with it
+
+require(mclust)
+require(devtools)
+require(data.table)
+
+pgmy11.fasta  <- data.table(PGMY11_primer_samples_perc_id_only, key = "rrpNum") 
+gp5.fasta  <- data.table(gp5_primer_samples_perc_id_only, key = "rrpNum") 
+
 
 gp_Mclust<-Mclust(gp5_primer_samples_perc_id_only[2:6])
 summary(gp_Mclust)
-gp_Mclust
-Mclust(gp5_primer_samples_perc_id_only[2:6])
-Mclust(gp5_primer_samples_perc_id_only[2:3])
-Mclust(gp5_primer_samples_perc_id_only[,2:6])
-image(gp5_primer_samples_perc_id_only[,2:6])
-gp5_primer_samples_perc_id_only?
-;
-?gp5_primer_samples_perc_id_only
-rstudio::viewData(PGMY11_primer_samples_perc_id_only)
+
+# Josh tries to visualize the data
+# Not sure what this is about
 gp_matrix<-data.matrix(gp5_primer_samples_perc_id_only[,2:6], rownames.force=NA)
-fix(gp_Mclust)
-rstudio::viewData(gp_matrix)
-rstudio::viewData(gp5_primer_samples_perc_id_only)
-rstudio::viewData(gp_matrix)
 image(gp_matrix)
 persp(gp_matrix)
 persp(gp_matrix, expand=.2)
-rstudio::viewData(gp5_primer_samples_perc_id_only)
-summary(gp_Mclust)
-gp_Mclust.modelName
-fMclust<-Mclust(faithful)
-summary(fMclust)
-unload(Mclust)
-install.packages("mclust")
-library(mclust)
-summary(fMclust)
-fMclust<-Mclust(faithful)
-summary(fMclust)
-install.packages("mclust")
-gp_Mclust<-gp5_primer_samples_perc_id_only
-summary(gp_Mclust)
-gp_Mclust<-Mclust(gp5_primer_samples_perc_id_only)
-library(mclust)
-gp_Mclust<-Mclust(gp5_primer_samples_perc_id_only)
-summary(gp_Mclust)
-plot(gp_Mclust)
-gp_Mclust<-Mclust(gp5_primer_samples_perc_id_only[,2:6])
-summary(gp_Mclust)
-plot(gp_Mclust)
-gp_16_11_only_Mclust<-Mclust(gp5_primer_samples_perc_id_only[,2:3])
-summary(gp_16_11_only_Mclust)
-plot(gp_16_11_only_Mclust)
-gp_16_11_only_Mclust
-names(gp_16_11_only_Mclust)
-gp_16_11_only_Mclust.modelName
-gp_16_11_only_Mclust$modelName
-gp_16_11_only_Mclust$parameters
-gp_16_11_only_Mclust$uncertainty
-plot(gp_16_11_only_Mclust$uncertainty)
-summary(gp_Mclust)
-install.packages("bayesclust")
-library(bayesclust)
-??bayesclust
+# end of not sure what this is about
+
+
+
 names(gp_Mclust)
-gp_Mclust$classification
-c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1])
-viewdata(c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1]))
-rstudio::viewdata(c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1]))
-rstudio:viewdata(c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1]))
-??rstuio
-??rstudio
-rstudio::viewData(c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1]))
-rstudio::viewData(c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1]))
-rstudio:viewdata(cbind(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1]))
-rstudio::viewData(cbind(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1]))
-install.packages("knitr")
-Mclust?
-;
-?Mclust
-rstudio::viewData(cbind(gp_Mclust$classification,gp_Mclust$z))
+gp_Mclust$call
+gp_Mclust$modelName
+gp_Mclust$n
 gp_Mclust$d
 gp_Mclust$G
+gp_Mclust$BIC
 gp_Mclust$bic
-gp_Mclust$loglik
+gp_Mclust$logilik
 gp_Mclust$df
-summary(gp_Mclust, parameters=TRUE)
-plot(hclust(gp5_primer_samples_perc_id_only[,2:6]))
-?dist
-grep(pattern="honeye.",x=c("none", "honeye.", "honeyer", "honeye66"), ignore.case=TRUE, value=TRUE)
-grep(pattern="honeye.",x=c("none", "honeye.", "honeyer", "honeye66"), ignore.case=TRUE, value=FALSE)
-gsub(pattern="honeye.",x=c("none", "honeye.", "honeyer", "honeye66"), replacement="dontknow", ignore.case=TRUE)
-gsub(pattern="honeye[^6]+",x=c("none", "honeye.", "honeyer", "honeye66"), replacement="dontknow", ignore.case=TRUE)
-gsub(pattern="honeye[^7]+",x=c("none", "honeye.", "honeyer", "honeye66"), replacement="dontknow", ignore.case=TRUE)
-library(mclust)
-#Load up the data from the alignments
-data<-read.table("P:\\o_drive\\Homes\\epowell\\RRP\\all_against_all_matrix_ggsearch", header=TRUE, sep=" ")
-data
-gp5_primer_samples_perc_id_only <- read.delim("P:/o_drive/Homes/epowell/RRP/HPV Typing/gp5_primer_samples_perc_id_only.tsv")
-PGMY11_primer_samples_perc_id_only <- read.delim("P:/o_drive/Homes/epowell/RRP/HPV Typing/PGMY11_primer_samples_perc_id_only.tsv")
-Mclust(gp5_primer_samples_perc_id_only[,2:6])
-summary(Mclust(gp5_primer_samples_perc_id_only[2:6]))
-Mclust(gp5_primer_samples_perc_id_only[,2:6],G=5)
-Mclust(gp5_primer_samples_perc_id_only[,2:6],G=4)
+gp_Mclust$parameters
+gp_Mclust$uncertainty
+gp_Mclust$z
+gp_Mclust$classification
 
+summary(gp_Mclust, parameters=TRUE)
 plot(Mclust(gp5_primer_samples_perc_id_only[2:6]))
-mclust_gp5 <- Mclust(gp5_primer_samples_perc_id_only[2:6])
-summary(mclust_gp5)
+
+
+
 mclust_pgmy11<-Mclust(PGMY11_primer_samples_perc_id_only[2:6])
 summary(mclust_pgmy11)
-gp5_BIC <- mclustBIC(gp5_primer_samples_perc_id_only)
-summary(gp5_BIC, data = gp5_primer_samples_perc_id_only)
-plot(gp5_BIC, legendArgs = list(x = 'topleft'))
-c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1])
-gp_Mclust$classification
-c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1])
-c(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1])
-cbind(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1])
 
-results <- cbind(gp_Mclust$classification,gp5_primer_samples_perc_id_only[,1])
+names(mclust_pgmy11)
+mclust_pgmy11$call
+mclust_pgmy11$modelName
+mclust_pgmy11$n
+mclust_pgmy11$d
+mclust_pgmy11$G
+mclust_pgmy11$BIC
+mclust_pgmy11$bic
+mclust_pgmy11$logilik
+mclust_pgmy11$df
+mclust_pgmy11$parameters
+mclust_pgmy11$uncertainty
+mclust_pgmy11$z
+mclust_pgmy11$classification
 
-summary(mclust_pgmy11)
-plot(mclust_pgmy11, legendArgs = list(x = 'topleft'))
-summary(gp5_BIC, data = gp5_primer_samples_perc_id_only)
-summary(gp_Mclust)
-summary(gp5_BIC, data = gp5_primer_samples_perc_id_only)
-gp5_BIC <- mclustBIC(gp5_primer_samples_perc_id_only[2:6])
-```
-gp5_primer_samples_perc_id_only[2:6]
-summary(gp5_BIC, data = gp5_primer_samples_perc_id_only)
-pgmy_BIC <- mclustBIC(PGMY11_primer_samples_perc_id_only[2:6])
-summary(pgmy_BIC, data = PGMY11_primer_samples_perc_id_only)
-summary(pgmy_BIC)
-summary(mclust_pgmy11)
+summary(mclust_pgmy11, parameters=TRUE)
 plot(mclust_pgmy11)
+
+
+# Check for specimens that were only sequenced by one primer or were duplicates-----------------------
+
+pgmy11.only <- sort(setdiff(PGMY11_primer_samples_perc_id_only$rrpNum, gp5_primer_samples_perc_id_only$rrpNum))#PGMY11 present but not in other group
+pgmy11.only
+length(pgmy11.only)
+gp5.only <- sort(setdiff(gp5_primer_samples_perc_id_only$rrpNum, PGMY11_primer_samples_perc_id_only$rrpNum))#GP5+ present but not in other group
+gp5.only
+length(gp5.only)
+
+length(intersect(PGMY11_primer_samples_perc_id_only$rrpNum, gp5_primer_samples_perc_id_only$rrpNum))
+
+sum(duplicated(PGMY11_primer_samples_perc_id_only$rrpNum))
+sort(PGMY11_primer_samples_perc_id_only$rrpNum[duplicated(PGMY11_primer_samples_perc_id_only$rrpNum)])
+sum(duplicated(gp5_primer_samples_perc_id_only$rrpNum))
+sort(gp5_primer_samples_perc_id_only$rrpNum[duplicated(gp5_primer_samples_perc_id_only$rrpNum)])
+
+anyDuplicated(gp5_primer_samples_perc_id_only$rrpNum)
+
+# Explore duplicates----------------------
+
+dup.pgmy11  <-  pgmy11.fasta[duplicated(rrpNum), rrpNum]
+pgmy11.fasta[rrpNum %in% dup.pgmy11,]
+
+dup.gp5  <-  gp5.fasta[duplicated(rrpNum), rrpNum]
+gp5.fasta[rrpNum %in% dup.gp5,]
+
 
